@@ -1,10 +1,21 @@
 import styled from "styled-components";
+import Layout from "../components/Layout";
 
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
+const Container = styled.div`
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+  height: 100%;
+
+  @media (max-width: 1280px) {
+    padding: 1.5rem 1rem;
+  }
 `;
 
 export default function Home() {
-  return <Title>My page</Title>;
+  return (
+    <Layout>
+      <Container>main contents</Container>
+    </Layout>
+  );
 }
