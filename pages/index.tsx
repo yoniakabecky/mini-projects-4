@@ -1,7 +1,10 @@
 import { GetStaticProps } from "next";
+import React from "react";
 import styled from "styled-components";
 import CountryCard from "../components/CountryCard";
 import Layout from "../components/Layout";
+import RegionFilter from "../components/RegionFilter";
+import SearchBar from "../components/SearchBar";
 import { ICountry } from "../types/country";
 import { getInitialDisplayData } from "../utils/countries";
 
@@ -23,7 +26,16 @@ const Container = styled.div`
 `;
 
 const Options = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 48px;
+`;
+
+const Loader = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Countries = styled.section`
@@ -33,18 +45,56 @@ const Countries = styled.section`
 `;
 
 export default function Home({ countries }: Props) {
+  const [region, setRegion] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [filteredCountries, setFilteredCountries] = React.useState([
+    ...countries,
+  ]);
+
+  const memoInitData = React.useMemo(() => {
+    return async () => {
+      const data = await getInitialDisplayData();
+
+      setFilteredCountries(data);
+      setLoading(false);
+    };
+  }, [region]);
+
+  const memoRegionData = React.useMemo(() => {
+    return async () => {
+      const res = await fetch(
+        `https://restcountries.eu/rest/v2/region/${region}`
+      );
+      const data = await res.json();
+
+      setFilteredCountries(data);
+      setLoading(false);
+    };
+  }, [region]);
+
+  React.useEffect(() => {
+    setLoading(true);
+    region === "" ? memoInitData() : memoRegionData();
+  }, [region]);
+
   return (
     <Layout>
       <Container>
         <Options>
-          <p>filter and search bar</p>
+          <SearchBar />
+
+          <RegionFilter region={region} setRegion={setRegion} />
         </Options>
 
-        <Countries>
-          {countries.map((country, i) => (
-            <CountryCard country={country} key={`country-${i}`} />
-          ))}
-        </Countries>
+        {loading ? (
+          <Loader>Loading...</Loader>
+        ) : (
+          <Countries>
+            {filteredCountries?.map((country, i) => (
+              <CountryCard country={country} key={`country-${i}`} />
+            ))}
+          </Countries>
+        )}
       </Container>
     </Layout>
   );

@@ -17,6 +17,7 @@ export const darkTheme: DefaultTheme = {
   background: "hsl(207, 26%, 17%)",
   color: "hsl(0, 0%, 100%)",
   boxShadow: "0px 2px 10px rgba(35, 39, 42, 0.5)",
+  hoverBg: "",
 };
 
 export const lightTheme: DefaultTheme = {
@@ -25,4 +26,5 @@ export const lightTheme: DefaultTheme = {
   background: "hsl(0, 0%, 98%)",
   color: "hsl(200, 15%, 8%)",
   boxShadow: "0px 2px 10px #E5E5E5",
+  hoverBg: "rgba(204, 204, 204, 0.3)",
 };

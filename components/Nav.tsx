@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
+import Moon from "./MoonIcon";
 
 interface Props {}
 
@@ -26,13 +27,35 @@ const Container = styled.div`
   }
 `;
 
+const Title = styled.h1`
+  font-weight: 800;
+  font-size: 24px;
+`;
+
+const ThemeBtn = styled.div`
+  display: flex;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+`;
+
+const MoonIcon = styled(Moon)`
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  stroke: ${(props) => props.theme.color};
+`;
+
 export default function Nav({}: Props): ReactElement {
   return (
     <Root>
       <Container>
-        <div>Where in the world?</div>
+        <Title>Where in the world?</Title>
 
-        <div>Dark Mode</div>
+        <ThemeBtn onClick={() => console.log("toggle theme")}>
+          <MoonIcon filled={false} />
+          Dark Mode
+        </ThemeBtn>
       </Container>
     </Root>
   );
