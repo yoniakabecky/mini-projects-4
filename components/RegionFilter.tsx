@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
+import DefaultButton from "./Button";
 import DownIcon from "./DownIcon";
 
 interface Props {
@@ -13,25 +14,11 @@ const Root = styled.div`
   font-weight: 300;
 `;
 
-const Button = styled.div`
-  display: flex;
-  align-items: center;
+const Button = styled(DefaultButton)`
   justify-content: space-between;
-  transition: all 0.3s ease;
-  border-radius: 4px;
   padding: 18px 18px 18px 24px;
-  background-color: ${(props) => props.theme.primary};
   width: 200px;
   height: 56px;
-  cursor: pointer;
-
-  :hover {
-    box-shadow: ${(props) => props.theme.boxShadow};
-  }
-
-  :active {
-    background-color: ${(props) => props.theme.hoverBg};
-  }
 
   span {
     text-transform: capitalize;

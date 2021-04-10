@@ -23,10 +23,6 @@ const Root = styled.div`
   :active {
     background-color: ${(props) => props.theme.hoverBg};
   }
-
-  span {
-    text-transform: capitalize;
-  }
 `;
 
 export default function Button({
