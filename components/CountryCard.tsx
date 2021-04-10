@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { ICountry } from "../types/country";
@@ -6,7 +7,7 @@ interface Props {
   country: ICountry;
 }
 
-const Root = styled.article`
+const Card = styled.article`
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -54,29 +55,31 @@ const Detail = styled.p`
 
 export default function CountryCard({ country }: Props): ReactElement {
   return (
-    <Root onClick={() => console.log(country.alpha3Code)}>
-      <Flag>
-        <img src={country.flag} alt={`${country.name} flag`} />
-      </Flag>
+    <Link href="/[country]" as={`/${country.alpha3Code}`}>
+      <Card>
+        <Flag>
+          <img src={country.flag} alt={`${country.name} flag`} />
+        </Flag>
 
-      <Details>
-        <Name>{country.name}</Name>
+        <Details>
+          <Name>{country.name}</Name>
 
-        <Detail>
-          <b>Population: </b>
-          {country.population.toLocaleString()}
-        </Detail>
+          <Detail>
+            <b>Population: </b>
+            {country.population.toLocaleString()}
+          </Detail>
 
-        <Detail>
-          <b>Region: </b>
-          {country.region}
-        </Detail>
+          <Detail>
+            <b>Region: </b>
+            {country.region}
+          </Detail>
 
-        <Detail>
-          <b>Capital: </b>
-          {country.capital}
-        </Detail>
-      </Details>
-    </Root>
+          <Detail>
+            <b>Capital: </b>
+            {country.capital}
+          </Detail>
+        </Details>
+      </Card>
+    </Link>
   );
 }

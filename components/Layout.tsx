@@ -1,10 +1,10 @@
-import Head from "next/head";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 import Nav from "./Nav";
 
 interface Props {
   children: React.ReactNode;
+  className?: string;
 }
 
 const Main = styled.main`
@@ -16,27 +16,12 @@ const Main = styled.main`
   color: ${(props) => props.theme.color};
 `;
 
-export default function Layout({ children }: Props): ReactElement {
+export default function Layout({ children, className }: Props): ReactElement {
   return (
     <>
-      <Head>
-        <title>REST Countries API | Frontend Mentor</title>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="./images/favicon-32x32.png"
-        />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-
       <Nav />
 
-      <Main>{children}</Main>
+      <Main className={className}>{children}</Main>
     </>
   );
 }
