@@ -10,7 +10,9 @@ import DefaultLayout from "../components/Layout";
 import { ICountry } from "../types/country";
 
 const Layout = styled(DefaultLayout)`
-  background-color: ${(props) => props.theme.primary};
+  && {
+    background-color: ${(props) => props.theme.backgroundSecondary};
+  }
 `;
 
 const Container = styled.div`

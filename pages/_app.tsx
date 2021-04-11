@@ -1,9 +1,13 @@
 import Head from "next/head";
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, lightTheme } from "../theme";
+import { darkTheme, GlobalStyle, lightTheme } from "../theme";
+import React from "react";
+import Nav from "../components/Nav";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [darkMode, setDarkMode] = React.useState(false);
+
   return (
     <>
       <Head>
@@ -23,7 +27,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
       <GlobalStyle />
 
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <Nav theme={darkMode} setTheme={setDarkMode} />
+
         <Component {...pageProps} />
       </ThemeProvider>
     </>

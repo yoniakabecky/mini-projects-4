@@ -14,7 +14,7 @@ const Card = styled.article`
   justify-self: center;
   border-radius: 4px;
   box-shadow: ${(props) => props.theme.boxShadow};
-  background-color: ${(props) => props.theme.background};
+  background-color: ${(props) => props.theme.primary};
   cursor: pointer;
   width: 264px;
   height: 336px;

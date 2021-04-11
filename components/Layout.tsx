@@ -1,13 +1,12 @@
 import React, { ReactElement } from "react";
 import styled from "styled-components";
-import Nav from "./Nav";
 
 interface Props {
   children: React.ReactNode;
   className?: string;
 }
 
-const Main = styled.main`
+const Root = styled.main`
   margin-top: 80px;
   background-color: ${(props) => props.theme.background};
   width: 100%;
@@ -17,11 +16,5 @@ const Main = styled.main`
 `;
 
 export default function Layout({ children, className }: Props): ReactElement {
-  return (
-    <>
-      <Nav />
-
-      <Main className={className}>{children}</Main>
-    </>
-  );
+  return <Root className={className}>{children}</Root>;
 }

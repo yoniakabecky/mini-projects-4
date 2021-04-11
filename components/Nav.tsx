@@ -2,8 +2,6 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import Moon from "./MoonIcon";
 
-interface Props {}
-
 const Root = styled.nav`
   position: fixed;
   top: 0;
@@ -44,16 +42,22 @@ const MoonIcon = styled(Moon)`
   width: 18px;
   height: 18px;
   stroke: ${(props) => props.theme.color};
+  fill: ${(props) => (props.filled ? props.theme.color : "none")};
 `;
 
-export default function Nav({}: Props): ReactElement {
+interface Props {
+  theme: boolean;
+  setTheme: (theme: boolean) => void;
+}
+
+export default function Nav({ theme, setTheme }: Props): ReactElement {
   return (
     <Root>
       <Container>
         <Title>Where in the world?</Title>
 
-        <ThemeBtn onClick={() => console.log("toggle theme")}>
-          <MoonIcon filled={false} />
+        <ThemeBtn onClick={() => setTheme(!theme)}>
+          <MoonIcon filled={theme} />
           Dark Mode
         </ThemeBtn>
       </Container>

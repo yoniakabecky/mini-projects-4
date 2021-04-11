@@ -8,6 +8,7 @@ const Root = styled.div`
   display: flex;
   align-items: center;
   border-radius: 4px;
+  box-shadow: ${(props) => props.theme.boxShadow};
   background-color: ${(props) => props.theme.primary};
   width: 480px;
   height: 56px;
@@ -17,7 +18,7 @@ const SearchIcon = styled(Search)`
   margin: 0 24px 0 32px;
   width: 16px;
   height: 16px;
-  fill: ${(props) => props.theme.secondary};
+  fill: ${(props) => props.theme.textSecondary};
 `;
 
 const Input = styled.input`
@@ -32,7 +33,7 @@ const Input = styled.input`
   }
 
   ::placeholder {
-    color: ${(props) => props.theme.secondary};
+    color: ${(props) => props.theme.textSecondary};
   }
 `;
 

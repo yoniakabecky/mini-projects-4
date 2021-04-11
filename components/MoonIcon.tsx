@@ -1,18 +1,17 @@
 import React, { ReactElement } from "react";
 
 interface Props {
-  filled: boolean;
+  filled?: boolean;
   className?: string;
 }
 
-export default function MoonIcon({ filled, className }: Props): ReactElement {
+export default function MoonIcon({ className }: Props): ReactElement {
   return (
     <svg
       className={className}
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
