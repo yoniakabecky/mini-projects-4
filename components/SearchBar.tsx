@@ -2,8 +2,6 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import Search from "./SearchIcon";
 
-interface Props {}
-
 const Root = styled.div`
   display: flex;
   align-items: center;
@@ -37,7 +35,15 @@ const Input = styled.input`
   }
 `;
 
-export default function SearchBar({}: Props): ReactElement {
+interface Props {
+  keyword: string;
+  setKeyword: (keyword: string) => void;
+}
+
+export default function SearchBar({
+  keyword,
+  setKeyword,
+}: Props): ReactElement {
   return (
     <Root>
       <SearchIcon />
@@ -45,7 +51,8 @@ export default function SearchBar({}: Props): ReactElement {
       <Input
         type="text"
         placeholder="Search for a country..."
-        onChange={(e) => console.log(e.target.value)}
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
       />
     </Root>
   );

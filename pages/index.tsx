@@ -50,6 +50,7 @@ export default function Home({ countries }: Props) {
   const [filteredCountries, setFilteredCountries] = React.useState([
     ...countries,
   ]);
+  const [keyword, setKeyword] = React.useState("");
 
   const memoInitData = React.useMemo(() => {
     return async () => {
@@ -81,7 +82,7 @@ export default function Home({ countries }: Props) {
     <Layout>
       <Container>
         <Options>
-          <SearchBar />
+          <SearchBar keyword={keyword} setKeyword={setKeyword} />
 
           <RegionFilter region={region} setRegion={setRegion} />
         </Options>
@@ -90,9 +91,14 @@ export default function Home({ countries }: Props) {
           <Loader>Loading...</Loader>
         ) : (
           <Countries>
-            {filteredCountries?.map((country, i) => (
-              <CountryCard country={country} key={`country-${i}`} />
-            ))}
+            {filteredCountries?.map((country, i) => {
+              if (
+                keyword === "" ||
+                country.name.toLowerCase().includes(keyword.toLowerCase())
+              ) {
+                return <CountryCard country={country} key={`country-${i}`} />;
+              }
+            })}
           </Countries>
         )}
       </Container>
