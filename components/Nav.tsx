@@ -28,6 +28,10 @@ const Container = styled.div`
 const Title = styled.h1`
   font-weight: 800;
   font-size: 24px;
+
+  @media (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 const ThemeBtn = styled.div`
@@ -35,6 +39,10 @@ const ThemeBtn = styled.div`
   cursor: pointer;
   font-weight: 600;
   font-size: 16px;
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 const MoonIcon = styled(Moon)`
@@ -43,6 +51,11 @@ const MoonIcon = styled(Moon)`
   height: 18px;
   stroke: ${(props) => props.theme.color};
   fill: ${(props) => (props.filled ? props.theme.color : "none")};
+
+  @media (max-width: 600px) {
+    width: 12px;
+    height: 12px;
+  }
 `;
 
 interface Props {

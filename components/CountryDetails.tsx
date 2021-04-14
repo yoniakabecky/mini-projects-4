@@ -9,6 +9,11 @@ const Root = styled.section`
   display: flex;
   justify-content: space-between;
   margin-top: 80px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Flag = styled.figure`
@@ -21,18 +26,35 @@ const Flag = styled.figure`
     height: 100%;
     object-fit: fill;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+
+    img {
+      max-height: 228px;
+    }
+  }
 `;
 
 const Information = styled.div`
   padding: 38px 0;
   width: 45vw;
   max-width: 600px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 45px 0 25px;
+  }
 `;
 
 const Name = styled.h2`
   margin-bottom: 30px;
   font-weight: 700;
   font-size: 32px;
+
+  @media (max-width: 768px) {
+    font-size: 22px;
+  }
 `;
 
 const Text = styled.div`
@@ -47,6 +69,11 @@ const Text = styled.div`
   :last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
 `;
 
 const MoreDetails = styled.div`
@@ -55,6 +82,16 @@ const MoreDetails = styled.div`
 
   > div {
     width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 0;
+
+    > div {
+      width: 100%;
+      margin-bottom: 45px;
+    }
   }
 `;
 
@@ -67,6 +104,15 @@ const Borders = styled.div`
   b {
     font-weight: 600;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    b {
+      margin-bottom: 16px;
+    }
+  }
 `;
 
 const BorderCountry = styled(Button)`
@@ -74,6 +120,17 @@ const BorderCountry = styled(Button)`
   padding: 4px 28px;
   font-weight: 300;
   font-size: 14px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+`;
+
+const CountryBtnWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 interface Props {
@@ -153,12 +210,14 @@ export default function CountryDetails({
         <Borders>
           <b>Border Countries:</b>
 
-          {codeMap &&
-            country.borders.map((border, i) => (
-              <Link href="/[country]" as={`/${border}`} key={`border-${i}`}>
-                <BorderCountry>{codeMap.get(border)}</BorderCountry>
-              </Link>
-            ))}
+          <CountryBtnWrapper>
+            {codeMap &&
+              country.borders.map((border, i) => (
+                <Link href="/[country]" as={`/${border}`} key={`border-${i}`}>
+                  <BorderCountry>{codeMap.get(border)}</BorderCountry>
+                </Link>
+              ))}
+          </CountryBtnWrapper>
         </Borders>
       </Information>
     </Root>

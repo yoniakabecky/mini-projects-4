@@ -16,7 +16,7 @@ export const darkTheme: DefaultTheme = {
   background: "hsl(207, 26%, 17%)",
   backgroundSecondary: "hsl(207, 25%, 17%)",
   color: "hsl(0, 0%, 100%)",
-  textSecondary: "hsl(0, 0%, 100%)",
+  textSecondary: "hsl(0, 0%, 60%)",
   boxShadow: "0px 2px 10px rgba(35, 39, 42, 0.5)",
   hoverBg: "rgba(255, 255, 255, 0.2)",
 };

@@ -12,6 +12,10 @@ const Root = styled.div`
   position: relative;
   font-size: 14px;
   font-weight: 300;
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 const Button = styled(DefaultButton)`
@@ -23,12 +27,21 @@ const Button = styled(DefaultButton)`
   span {
     text-transform: capitalize;
   }
+
+  @media (max-width: 600px) {
+    height: 48px;
+  }
 `;
 
 const ChevronDown = styled(DownIcon)`
   width: 12px;
   height: 12px;
   stroke: ${(props) => props.theme.color};
+
+  @media (max-width: 600px) {
+    width: 10px;
+    height: 10px;
+  }
 `;
 
 const DropDown = styled.ul`
@@ -40,6 +53,10 @@ const DropDown = styled.ul`
   padding: 12px 0;
   width: 100%;
   list-style: none;
+
+  @media (max-width: 600px) {
+    width: 200px;
+  }
 `;
 
 const DropDownContent = styled.li`

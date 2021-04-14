@@ -26,6 +26,10 @@ const Container = styled.div`
   @media (max-width: 1280px) {
     padding: 80px 16px;
   }
+
+  @media (max-width: 768px) {
+    padding: 40px 28px;
+  }
 `;
 
 const BackBtn = styled(Button)`
@@ -38,12 +42,26 @@ const BackBtn = styled(Button)`
     font-size: 16px;
     font-weight: 700;
   }
+
+  @media (max-width: 768px) {
+    width: 104px;
+    height: 32px;
+
+    span {
+      font-size: 14px;
+    }
+  }
 `;
 
 const Arrow = styled(ArrowIcon)`
   width: 20px;
   height: 20px;
   fill: ${(props) => props.theme.color};
+
+  @media (max-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
 `;
 
 export type CountryCode = {

@@ -29,6 +29,10 @@ const Options = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 48px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const Loader = styled.div`

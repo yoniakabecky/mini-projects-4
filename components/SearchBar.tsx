@@ -10,6 +10,12 @@ const Root = styled.div`
   background-color: ${(props) => props.theme.primary};
   width: 480px;
   height: 56px;
+
+  @media (max-width: 600px) {
+    margin-bottom: 40px;
+    width: 100%;
+    height: 48px;
+  }
 `;
 
 const SearchIcon = styled(Search)`
@@ -17,6 +23,11 @@ const SearchIcon = styled(Search)`
   width: 16px;
   height: 16px;
   fill: ${(props) => props.theme.textSecondary};
+
+  @media (max-width: 600px) {
+    width: 14px;
+    height: 14px;
+  }
 `;
 
 const Input = styled.input`
@@ -25,6 +36,7 @@ const Input = styled.input`
   width: 100%;
   height: 100%;
   font-size: 14px;
+  color: ${(props) => props.theme.color};
 
   :focus {
     outline: none;
@@ -32,6 +44,10 @@ const Input = styled.input`
 
   ::placeholder {
     color: ${(props) => props.theme.textSecondary};
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
   }
 `;
 
