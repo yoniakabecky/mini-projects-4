@@ -50,7 +50,6 @@ const Countries = styled.section`
 
 export default function Home({ countries }: Props) {
   const [region, setRegion] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
   const [filteredCountries, setFilteredCountries] = React.useState([
     ...countries,
   ]);
@@ -61,7 +60,6 @@ export default function Home({ countries }: Props) {
       const data = await getInitialDisplayData();
 
       setFilteredCountries(data);
-      setLoading(false);
     };
   }, [region]);
 
@@ -73,12 +71,10 @@ export default function Home({ countries }: Props) {
       const data = await res.json();
 
       setFilteredCountries(data);
-      setLoading(false);
     };
   }, [region]);
 
   React.useEffect(() => {
-    setLoading(true);
     region === "" ? memoInitData() : memoRegionData();
   }, [region]);
 
@@ -91,20 +87,16 @@ export default function Home({ countries }: Props) {
           <RegionFilter region={region} setRegion={setRegion} />
         </Options>
 
-        {loading ? (
-          <Loader>Loading...</Loader>
-        ) : (
-          <Countries>
-            {filteredCountries?.map((country, i) => {
-              if (
-                keyword === "" ||
-                country.name.toLowerCase().includes(keyword.toLowerCase())
-              ) {
-                return <CountryCard country={country} key={`country-${i}`} />;
-              }
-            })}
-          </Countries>
-        )}
+        <Countries>
+          {filteredCountries?.map((country, i) => {
+            if (
+              keyword === "" ||
+              country.name.toLowerCase().includes(keyword.toLowerCase())
+            ) {
+              return <CountryCard country={country} key={`country-${i}`} />;
+            }
+          })}
+        </Countries>
       </Container>
     </Layout>
   );
