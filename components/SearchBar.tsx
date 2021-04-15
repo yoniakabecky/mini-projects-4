@@ -10,6 +10,7 @@ const Root = styled.div`
   background-color: ${(props) => props.theme.primary};
   width: 480px;
   height: 56px;
+  overflow: hidden;
 
   @media (max-width: 600px) {
     margin-bottom: 40px;

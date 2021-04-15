@@ -25,14 +25,12 @@ const Root = styled.div`
   }
 `;
 
-export default function Button({
-  children,
-  className,
-  onClick,
-}: Props): ReactElement {
-  return (
-    <Root className={className} onClick={onClick}>
+const Button = React.forwardRef<HTMLDivElement, Props>(
+  ({ children, className, onClick }, ref) => (
+    <Root ref={ref} className={className} onClick={onClick}>
       {children}
     </Root>
-  );
-}
+  )
+);
+
+export default Button;

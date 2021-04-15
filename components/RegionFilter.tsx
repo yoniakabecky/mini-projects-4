@@ -83,11 +83,25 @@ export default function RegionFilter({
   setRegion,
 }: Props): ReactElement {
   const [open, setOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLUListElement | null>(null);
 
   const handleClick = (value: string) => {
     value === "all" ? setRegion("") : setRegion(value);
     setOpen(false);
   };
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current?.contains(event.target as Node)) {
+        return null;
+      }
+
+      setOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownRef]);
 
   return (
     <Root>
@@ -98,7 +112,7 @@ export default function RegionFilter({
       </Button>
 
       {open && (
-        <DropDown>
+        <DropDown ref={dropdownRef}>
           {regions.map((region) => (
             <DropDownContent key={region} onClick={() => handleClick(region)}>
               {region}
