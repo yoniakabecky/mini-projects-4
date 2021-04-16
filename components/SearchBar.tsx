@@ -67,6 +67,7 @@ export default function SearchBar({
 
       <Input
         type="text"
+        aria-label="search"
         placeholder="Search for a country..."
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
